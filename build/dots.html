@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<title>dots demo</title>
+<meta name="keywords" content="">
+<meta name="description" content="">
+<meta name="viewport" content="width=320, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+<!-- <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=no"> -->
+<link href='http://fonts.googleapis.com/css?family=Chewy' rel='stylesheet' type='text/css'>
+<style>
+p{
+	font-family : 'Chewy', cursive;
+	font-size: 24pt;
+	color: #888888;
+	margin:20px;
+}
+</style>
+</head>
+<body>
+	<p id="deleteTotalCount"></p>
+	<p id="deleteCount"></p>
+	<!-- <img src="http://blog-imgs-54.fc2.com/i/m/a/imageindex/20140206203433156.jpg"> -->
+	<div style="text-align:center;">
+		<canvas id="dotsCanvas" width='320' height='320'></canvas>
+	</div>
+
+	<script src='.Circle.js'></script>
+	<script src='.Dot.js'></script>
+	<script src='.Line.js'></script>
+	<script src='.Container.js'></script>	
+	<script src='.Stage.js'></script>	
+	<script src='./MainCtrl.js'></script>
+	
+	<script type="text/javascript">
+
+
+	function init(){
+		var canvas = document.getElementById('dotsCanvas');
+		dots.MainCtrl.setInitialSetting(canvas);
+
+		scoreEventHandler(null);
+	}
+
+	function scoreEventHandler(e){
+		// document.getElementById('deleteCount').innerHTML = '消した回数 : ' + dots.MainCtrl.getDeleteCount();
+		document.getElementById('deleteTotalCount').innerHTML = 'point : ' + dots.MainCtrl.getDeleteDotsCount();
+	}
+
+	window.addEventListener('load', init, false);
+	window.addEventListener('dot_score_update_event', scoreEventHandler, false);
+
+	</script>
+
+</body>
+</html>
